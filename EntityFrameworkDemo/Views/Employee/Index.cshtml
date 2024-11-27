@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EntityFrameworkDemo.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Add New Employee</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Eid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Esal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+@if (Model != null && Model.Any()){
+      @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Eid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Esal)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Eid  }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Eid  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Eid })
+            </td>
+        </tr>
+    }
+  }
+    </tbody>
+</table>
